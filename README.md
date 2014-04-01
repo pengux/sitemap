@@ -17,7 +17,7 @@ import (
 // Sitemap item
 item := SitemapItem{
 	"http://www.google.com",
-	lastMod,
+	time.Now(),
 	"hourly",
 	0.5,
 }
@@ -36,7 +36,7 @@ sitemap.ToFile("sitemap.xml.gz") // Save sitemap to a gzipped file
 // SitemapIndexItem
 sitemapIndexItem := SitemapIndexItem{
 	"http://www.google.com/sitemap.xml.gz",
-	lastMod,
+	time.Now(),
 }
 
 // SitemapIndex

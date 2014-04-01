@@ -18,9 +18,7 @@ const (
 	SitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	%s
-</urlset>`
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>`
 
 	// SitemapItemXML is the XML format for the URL item in sitemap
 	SitemapItemXML = `
@@ -34,9 +32,7 @@ const (
 
 	// SitemapIndexXML is the XML structure of a sitemap index
 	SitemapIndexXML = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	%s
-</sitemapindex>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</sitemapindex>
 `
 
 	// SitemapIndexItemXML is the XML structure of a sitemap index item
@@ -74,8 +70,8 @@ func (s *Sitemap) String() string {
 `))
 }
 
-// ToFile saves a sitemap to a file with either extension .xml or .gz
-// If extension is .gz, the file will be gzipped
+// ToFile saves a sitemap to a file with either extension .xml or .gz.
+// If extension is .gz, the file will be gzipped.
 func (s *Sitemap) ToFile(path string) error {
 	file, err := os.Create(path)
 	if err != nil {
@@ -152,8 +148,8 @@ func (i *SitemapIndexItem) String() string {
 	return fmt.Sprintf(SitemapIndexItemXML, i.Loc, i.LastMod.Format(time.RFC3339))
 }
 
-// ToFile saves a sitemap index to a file with either extension .xml or .gz
-// If extension is .gz, the file will be gzipped
+// ToFile saves a sitemap index to a file with either extension .xml or .gz.
+// If extension is .gz, the file will be gzipped.
 func (s *SitemapIndex) ToFile(path string) error {
 	file, err := os.Create(path)
 	if err != nil {
@@ -186,7 +182,7 @@ func (s *SitemapIndex) ToFile(path string) error {
 }
 
 // NewIndexFromDir creates a sitemap index by scanning a folder for files.
-// The files modified time will be used as LastMod
+// The files modified time will be used as LastMod.
 func NewIndexFromDir(dir, pathPrefix string) (*SitemapIndex, error) {
 	s := &SitemapIndex{
 		make([]SitemapIndexItem, 0),
