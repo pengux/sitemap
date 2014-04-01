@@ -3,6 +3,7 @@ package sitemap
 import (
 	"compress/gzip"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -27,8 +28,7 @@ const (
 		<lastmod>%s</lastmod>
 		<changefreq>%s</changefreq>
 		<priority>%.1f</priority>
-	</url>
-`
+	</url>`
 
 	// SitemapIndexXML is the XML structure of a sitemap index
 	SitemapIndexXML = `<?xml version="1.0" encoding="UTF-8"?>
@@ -40,8 +40,7 @@ const (
 	<sitemap>
 		<loc>%s</loc>
 		<lastmod>%s</lastmod>
-	</sitemap>
-`
+	</sitemap>`
 )
 
 // Sitemap represent a sitemap
@@ -188,18 +187,12 @@ func NewIndexFromDir(dir, pathPrefix string) (*SitemapIndex, error) {
 		make([]SitemapIndexItem, 0),
 	}
 
-	f, err := os.Open(dir)
+	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return s, err
 	}
 
-	list, err := f.Readdir(-1)
-	f.Close()
-	if err != nil {
-		return s, err
-	}
-
-	for _, file := range list {
+	for _, file := range files {
 		ext := filepath.Ext(file.Name())
 		if ext == ".xml" || ext == ".gz" {
 			var sitemapPath string
