@@ -19,7 +19,8 @@ const (
 	SitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>`
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s
+</urlset>`
 
 	// SitemapItemXML is the XML format for the URL item in sitemap
 	SitemapItemXML = `
@@ -32,7 +33,8 @@ const (
 
 	// SitemapIndexXML is the XML structure of a sitemap index
 	SitemapIndexXML = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</sitemapindex>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s
+</sitemapindex>
 `
 
 	// SitemapIndexItemXML is the XML structure of a sitemap index item

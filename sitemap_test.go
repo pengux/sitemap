@@ -20,7 +20,8 @@ var (
 	sitemapResult = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>`, itemResult)
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s
+</urlset>`, itemResult)
 
 	sitemapIndexItemResult = `
 	<sitemap>
@@ -29,7 +30,8 @@ var (
 	</sitemap>`
 
 	sitemapIndexResult = fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</sitemapindex>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s
+</sitemapindex>
 `, sitemapIndexItemResult)
 )
 
@@ -115,7 +117,8 @@ func TestFileGeneration(t *testing.T) {
 		fileinfo.ModTime(),
 	}
 	sitemapIndexResult2 := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</sitemapindex>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s
+</sitemapindex>
 `, sitemapIndexItem2.String())
 
 	if sitemapIndex2.String() != sitemapIndexResult2 {
