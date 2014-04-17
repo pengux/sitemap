@@ -184,7 +184,7 @@ func (s *SitemapIndex) ToFile(path string) error {
 
 // NewIndexFromDir creates a sitemap index by scanning a folder for files.
 // The files modified time will be used as LastMod.
-func NewIndexFromDir(dir, pathPrefix string) (*SitemapIndex, error) {
+func NewIndexFromDir(dir, pathPrefix, filenamePrefix string) (*SitemapIndex, error) {
 	s := &SitemapIndex{
 		make([]SitemapIndexItem, 0),
 	}
@@ -196,7 +196,7 @@ func NewIndexFromDir(dir, pathPrefix string) (*SitemapIndex, error) {
 
 	for _, file := range files {
 		ext := filepath.Ext(file.Name())
-		if ext == ".xml" || ext == ".gz" {
+		if strings.HasPrefix(file.Name(), filenamePrefix) && (ext == ".xml" || ext == ".gz") {
 			var sitemapPath string
 			if pathPrefix != "" {
 				sitemapPath = pathPrefix + file.Name()
